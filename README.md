@@ -1,6 +1,6 @@
 # First Session Adaptation model
 This repository contains the Pytorch implementation of the FSA/FSA-FiLM method from the ICCV-23 paper [First Session Adaptation: A Strong Replay-Free Baseline for
-Class-Incremental Learning]([https://arxiv.org](https://arxiv.org/pdf/2303.13199.pdf)).
+Class-Incremental Learning](https://arxiv.org/pdf/2303.13199.pdf).
 
 ## Environment Requirements
 
