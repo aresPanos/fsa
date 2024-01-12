@@ -39,7 +39,7 @@ Finally, for the few-shot setting using 50 shots run
 
     python src/train_eval.py --use_film --few_shots --train_shots 50 --dataset_fs cifar100 --datasets_path <directory_of_datasets> --results_dir ./results 
     
-The fine-tuned parameters of the model are stored at `./results/<task>/cifar100/<method>/saved_models/<model_name>.pt` where task $\in$ {`high_shots`, `fscil`, `few_shots`} and <method>=FullBody for FSA or <method>=FiLM for FSA-FiLM.
+The fine-tuned parameters of the model are stored at `./results/<task>/cifar100/<method>/saved_models/<model_name>.pt` where task $\in$ {`high_shots`, `fscil`, `few_shots`} and method=FullBody for FSA or method=FiLM for FSA-FiLM.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/aresPanos/fsa/blob/main/LICENSE) file for details.
