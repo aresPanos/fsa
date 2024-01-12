@@ -46,5 +46,5 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Acknowledgements
 Our code is based on the following repositories:
-* [FiT]([https://github.com/yangalan123/anhp-andtt](https://github.com/cambridge-mlg/fit/tree/main))
-* [FACT]([https://github.com/ant-research/hypro_tpp/tree/main](https://github.com/zhoudw-zdw/CVPR22-Fact))
+* [FiT](https://github.com/cambridge-mlg/fit/tree/main)
+* [FACT](https://github.com/zhoudw-zdw/CVPR22-Fact)
