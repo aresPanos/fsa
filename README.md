@@ -22,7 +22,7 @@ The experiments in the paper run on a single NVIDIA A100 GPU with 80 GB of memor
 
 ## Train and Evaluate FSA/FSA-FiLM
 
-The default feature extractor used for the majority of the experiuments in the paper is the <b>EfficientNet-B0</b>.
+The default pretrained feature extractor used for the majority of the experiments in the paper is the <b>EfficientNet-B0</b>. The pretrained weights (ImageNet-1k) are downloaded automatically in case they are not found stored in pytorch's cache directory.
 To train and evaluate the FSA model on CIFAR100 dataset for the high-shot setting, run
 
     python src/train_eval.py --dataset cifar100 --datasets_path <directory_of_datasets> --results_dir ./results
