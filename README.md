@@ -23,9 +23,21 @@ The experiments in the paper run on a single NVIDIA A100 GPU with 80 GB of memor
 ## Train and Evaluate FSA/FSA-FiLM
 
 The default feature extractor used for the majority of the experiuments in the paper is the <b>EfficientNet-B0</b>.
-To train and evaluate the FSA model on CIFAR100 dataset, run
+To train and evaluate the FSA model on CIFAR100 dataset for the high-shot setting, run
 
     python src/train_eval.py --dataset cifar100 --datasets_path <directory_of_datasets> --results_dir ./results
+
+Similarly, for fine-tuning only the FiLM parameters use the flag `use_film` and run
+
+    python src/train_eval.py --use_film --dataset cifar100 --datasets_path <directory_of_datasets> --results_dir ./results
+
+For the FSCIL experiment of Table 2 in the paper, run 
+
+    python src/train_eval.py --use_film --fscil --dataset_fscil cifar100 --datasets_path <directory_of_datasets> --results_dir ./results
+
+Finally, for the few-shot setting using 50 shots run
+
+    python src/train_eval.py --use_film --few_shots --train_shots 50 --dataset_fs cifar100 --datasets_path <directory_of_datasets> --results_dir ./results 
     
 The fine-tuned parameters of the model are stored at `./results/<task>/cifar100/<method>/saved_models/<model_name>.pt` where task $\in$ {`high_shots`, `fscil`, `few_shots`} and <method>=FullBody for FSA or <method>=FiLM for FSA-FiLM.
 
