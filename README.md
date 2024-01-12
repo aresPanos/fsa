@@ -14,15 +14,17 @@ Class-Incremental Learning](https://arxiv.org/pdf/2303.13199.pdf). Please cite t
 Ensure that all the dependencies have been installed using the `requirements.txt` file.
 
 ## Data preparation
-All datasets can be downoladed from [Google-Drive-1](https://drive.google.com/drive/folders/13e5jCkprJGB6jiVtIrU-XaCzSws5PPfB) and [Google-Drive-2](https://drive.google.com/drive/folders/0BwqmV0EcoUc8UklIR1BKV25YR1U?resourcekey=0-OrlU87jyc1m-dVMmY5aC4w). The datasets are already preprocessed and ready to be used. Unzip the files (train.pkl, dev.pkl, test.pkl) and put them in the [./data/{dataset_name}](https://github.com/aresPanos/dtpp/tree/main/data) directory.
 
-## Train DTPP model on real-world datasets and Evaluate it on next-event prediction
+See [here](https://github.com/aresPanos/fsa/tree/main/datasets) for instructions regarding the datasets required for the experiments.
 
-We train and evaluate the inter-event time model and the mark model, separately. 
+## GPU Requirements
+The experiments in the paper run on a single NVIDIA A100 GPU with 80 GB of memory. For GPUs with smaller memory, one could use smaller batch size but this could potentially give slightly different results.
 
-To train and evaluate the time model using two mixture components on Taxi dataset, run
+## Train and Evaluate FSA
 
-    python code/run/train_eval_time_dist.py --dataset taxi --data_dir <directory_of_data> --log_dir <directory_of_logs>
+To train and evaluate the FSA model on CIFAR100 dataset, run
+
+    python fsa_code/train_eval.py --dataset cifar100 --datasets_path <directory_of_datasets> --results_dir ./results
 
 The learned parameters of the mixture of log-Normals are stored at  `<directory_of_logs>/taxi/time_dist/saved_models/model_numMixtures-2.pt`
 
@@ -30,13 +32,8 @@ Next, to train and evaluate the mark model using D=128 and L=2 layers for the Tr
 
     python code/run/train_eval_mark_dist.py --dataset taxi -dmodel 64 -nLayers 2 --data_dir <same_as_above> --log_dir <same_as_above>
 
-The learned parameters of the model are stored at  `<directory_of_logs>/taxi/mark_dist/saved_models/XFMRNHPFast_dmodel-64_nLayers-2_nHeads-2_date-time.pt`
-
-## Long-horizon prediction
-
-To perform long-horizon prediction, we only need to define the directories of the two trained models from the previous step, together with the architecture of the Transformer,
-
-    python code/run/multi_step_eval.py --dataset taxi -dmodel 64 -nLayers 2 --data_dir <same_as_above> --log_dir <same_as_above> --model_times_dir <saved_model_of_times> --model_marks_dir <saved_model_of_marks>
+The fine-tuned parameters of the model are stored at  `./results/<task>/cifar100//saved_models/XFMRNHPFast_dmodel-64_nLayers-2_nHeads-2_date-time.pt`
+where task $\in$ {`high_shots`, `fscil`, `few_shots`}.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/aresPanos/dtpp/blob/main/LICENSE) file for details.
@@ -48,14 +45,5 @@ Our code is based on the following repositories:
 
 If you use this code as part of any published research, please acknowledge the following paper (it encourages researchers who publish their code!):
 
-## Citation
-If you use the code for any published work, please cire the following paper:
-
-    @inproceedings{,
-      author = {},
-      title = {},
-      booktitle = {},
-      year = {2024}
-    }
 
 
