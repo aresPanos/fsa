@@ -16,7 +16,7 @@ def get_dir_save(args: Namespace) -> str:
     elif args.fscil:
         save_path = os.path.join('fscil',  args.dataset_fscil)
     else:
-        save_path = os.path.join('full_shots',  args.dataset)
+        save_path = os.path.join('high_shots',  args.dataset)
 
     str_film = "FiLM" if args.use_film else "FullBody"
     save_path = os.path.join(save_path,  str_film)
