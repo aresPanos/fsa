@@ -24,7 +24,7 @@ The experiments in the paper run on a single NVIDIA A100 GPU with 80 GB of memor
 
 To train and evaluate the FSA model on CIFAR100 dataset, run
 
-    python fsa_code/train_eval.py --dataset cifar100 --datasets_path <directory_of_datasets> --results_dir ./results
+    python src/train_eval.py --dataset cifar100 --datasets_path <directory_of_datasets> --results_dir ./results
 
 The learned parameters of the mixture of log-Normals are stored at  `<directory_of_logs>/taxi/time_dist/saved_models/model_numMixtures-2.pt`
 
