@@ -20,30 +20,19 @@ See [here](https://github.com/aresPanos/fsa/tree/main/datasets) for instructions
 ## GPU Requirements
 The experiments in the paper run on a single NVIDIA A100 GPU with 80 GB of memory. For GPUs with smaller memory, one could use smaller batch size but this could potentially give slightly different results.
 
-## Train and Evaluate FSA
+## Train and Evaluate FSA/FSA-FiLM
 
+The default feature extractor used for the majority of the experiuments in the paper is the <b>EfficientNet-B0</b>.
 To train and evaluate the FSA model on CIFAR100 dataset, run
 
     python src/train_eval.py --dataset cifar100 --datasets_path <directory_of_datasets> --results_dir ./results
-
-The learned parameters of the mixture of log-Normals are stored at  `<directory_of_logs>/taxi/time_dist/saved_models/model_numMixtures-2.pt`
-
-Next, to train and evaluate the mark model using D=128 and L=2 layers for the Transformer architecture, run
-
-    python code/run/train_eval_mark_dist.py --dataset taxi -dmodel 64 -nLayers 2 --data_dir <same_as_above> --log_dir <same_as_above>
-
-The fine-tuned parameters of the model are stored at  `./results/<task>/cifar100//saved_models/XFMRNHPFast_dmodel-64_nLayers-2_nHeads-2_date-time.pt`
-where task $\in$ {`high_shots`, `fscil`, `few_shots`}.
+    
+The fine-tuned parameters of the model are stored at `./results/<task>/cifar100/<method>/saved_models/<model_name>.pt` where task $\in$ {`high_shots`, `fscil`, `few_shots`} and <method>=FullBody for FSA or <method>=FiLM for FSA-FiLM.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/aresPanos/dtpp/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/aresPanos/fsa/blob/main/LICENSE) file for details.
 
 ## Acknowledgements
 Our code is based on the following repositories:
-* [Attentive Neural Hawkes Process](https://github.com/yangalan123/anhp-andtt)
-* [HYPRO](https://github.com/ant-research/hypro_tpp/tree/main)
-
-If you use this code as part of any published research, please acknowledge the following paper (it encourages researchers who publish their code!):
-
-
-
+* [FiT]([https://github.com/yangalan123/anhp-andtt](https://github.com/cambridge-mlg/fit/tree/main))
+* [FACT]([https://github.com/ant-research/hypro_tpp/tree/main](https://github.com/zhoudw-zdw/CVPR22-Fact))
